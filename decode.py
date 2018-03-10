@@ -64,7 +64,7 @@ def crack_bit(i, entries):
         print(
             "Got different results for different x2 values. " +
             str(len(xor0_entries)) + " entries with xor2 == 0 and " +
-            str(len(xor1_entries)) + " entries with xor2 == 0"
+            str(len(xor1_entries)) + " entries with xor2 == 1"
         )
     
     return str(bit_val0)
