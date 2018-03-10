@@ -9,7 +9,7 @@ url = (
 
 
 def main():
-    all_entries = []
+    all_entries = json.load(open("./production-entries.json", "r")) or []
     for i in xrange(20):   # request 20 * 10,000 entries
         resp = requests.get(url)
         print("got resp " + str(i))

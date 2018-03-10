@@ -46,7 +46,9 @@ def encrypt_round(x, y, k):
 
 
 def crack_bit(i, entries):
-    ONE_COUNT_CUTOFF = 4351.5  # (128 bits * 68 rounds - 1) * (1/2)
+    ONE_COUNT_CUTOFF = 4352  # (128 bits * 68 rounds) * (1/2)
+    # if z is X, would expect mu = 4351.5; if z is Y, would expect mu = 4352.5
+    # cutoff is in between these two
 
     # if xor2[i] == 0, we would expect one_count_avg to be higher if k[i] == 1
     xor0_entries = filter(lambda e: e.xor2[i] == '0', entries)
@@ -91,7 +93,7 @@ def construct_master_key(round_keys):
 
 
 def main():
-    json_entries = json.load(open("./entries.json"))
+    json_entries = json.load(open("./production-entries.json"))
     initial_entries = []
 
     for json_entry in json_entries:
